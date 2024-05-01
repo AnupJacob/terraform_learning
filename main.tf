@@ -8,17 +8,50 @@ terraform {
 }
 
 provider "aws" {
-  region = var.AWS-REGION
-
-#  access_key = var.AWS_ACCESS_KEY
-#  secret_key = var.AWS_SECRET_KEY
+  region     = var.aws_region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
 }
 
-resource "aws_instance" "personal_test" {
-  ami           = "ami-0d421d84814b7d51c"
-  instance_type = "t2.micro"
+resource "aws_instance" "test_server_instance" {
+  ami           = var.ec2_ami
+  instance_type = var.ec2_instance_type
 
   tags = {
-    Name = "test"
+    Name = "terraform test instance"
+  }
+}
+
+resource "aws_vpc" "test_vpc1" {
+  cidr_block = var.vpc_cidr
+
+  tags = {
+    Name = "terraform test vpc 1"
+  }
+}
+
+resource "aws_subnet" "test_subnet1" {
+  vpc_id     = aws_vpc.test_vpc1.id
+  cidr_block = var.subnet_cidr
+
+  tags = {
+    Name = "terraform test subnet 1"
+  }
+}
+
+resource "aws_vpc" "test_vpc2" {
+  cidr_block = var.vpc_cidr
+
+  tags = {
+    Name = "terraform test vpc 2"
+  }
+}
+
+resource "aws_subnet" "test_subnet2" {
+  vpc_id     = aws_vpc.test_vpc2.id
+  cidr_block = var.subnet_cidr
+
+  tags = {
+    Name = "terraform test subnet 2"
   }
 }
