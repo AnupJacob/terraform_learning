@@ -7,7 +7,6 @@ resource "aws_budgets_budget" "budget-limit" {
   time_period_start = "2024-04-03_00:00"
   time_unit         = "DAILY"
 
-
   notification {
     comparison_operator        = "GREATER_THAN"
     threshold                  = 40

@@ -3,6 +3,6 @@ resource "aws_instance" "develop_server_instance" {
   instance_type = var.ec2_instance_type
 
   tags = {
-    Name = "development terraform instance"
+    Name = "terraform instance for development"
   }
 }

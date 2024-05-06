@@ -4,7 +4,7 @@ resource "aws_route_table" "develop-route_table" {
   route = []
 
   tags = {
-    Name = "example"
+    Name = "route table for development"
   }
 }
 
