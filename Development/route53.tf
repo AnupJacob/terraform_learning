@@ -10,5 +10,5 @@ resource "aws_route_table" "develop-route_table" {
 
 resource "aws_route_table_association" "route_table_association_1" {
   route_table_id = aws_route_table.develop-route_table.id
-  gateway_id = aws_internet_gateway.develop-internet_gateway_1.id
+  gateway_id     = aws_internet_gateway.develop-internet_gateway.id
 }
