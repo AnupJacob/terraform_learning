@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "develop-s3" {
+resource "aws_s3_bucket" "develop_s3" {
   bucket = "develop-s3"
 
   tags = {
