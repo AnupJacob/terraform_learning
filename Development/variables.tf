@@ -27,3 +27,16 @@ variable "subnet_cidr" {
   description = "CIDR for subnet"
   default     = "10.0.1.0/24"
 }
+
+variable "users" {
+  type = map(object({
+    role = string
+  }))
+}
+
+locals {
+  users_by_role = {
+    for name, user in var.users : user.role => name...
+  }
+}
+
